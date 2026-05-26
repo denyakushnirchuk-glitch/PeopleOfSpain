@@ -1,0 +1,10 @@
+node_modules
+dist
+.vite
+*.log
+.DS_Store
+
+# Local agent / skill tooling — not part of the website source
+.agents/
+.claude/
+skills-lock.json

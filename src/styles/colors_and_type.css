@@ -1,0 +1,234 @@
+/* ============================================================
+   POS — People of Spain
+   Foundations: color + type tokens
+   ============================================================ */
+
+/* Persuasive campaign typography:
+   - Oswald: condensed display — rallying cries, poster type
+   - Montserrat: geometric heading — wordmark, page headlines
+   - IBM Plex Sans: clean humanist body — Spanish glyphs, legibility
+   - IBM Plex Serif: editorial pull-quotes
+   The four together carry the gravity of a political document
+   without slipping into either luxury (serif-only) or tech-startup
+   (sans-only) territory. */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&display=swap');
+
+:root {
+  /* ---------- BRAND COLORS ---------- */
+  --pos-red:        #A23A37;
+  --pos-red-dark:   #7C2A28;
+  --pos-red-soft:   #C75953;
+  --pos-maroon:     #6B3251;
+  --pos-purple:     #3F2566;
+  --pos-purple-dark:#2A1849;
+  --pos-purple-soft:#5B3D85;
+
+  --pos-gradient: linear-gradient(90deg, var(--pos-red) 0%, var(--pos-maroon) 55%, var(--pos-purple) 100%);
+  --pos-gradient-diag: linear-gradient(135deg, var(--pos-red) 0%, var(--pos-maroon) 50%, var(--pos-purple) 100%);
+  --pos-gradient-vertical: linear-gradient(180deg, var(--pos-red) 0%, var(--pos-maroon) 55%, var(--pos-purple) 100%);
+
+  /* ---------- NEUTRALS ---------- */
+  --paper:          #F6F2EC;
+  --paper-2:        #EDE6D9;
+  --paper-3:        #E2D8C6;
+  --ink:            #1A2332;
+  --ink-2:          #3A4252;
+  --ink-3:          #6B6F78;
+  --bone:           #FFFFFF;
+
+  /* ---------- ACCENTS ---------- */
+  --gold:           #E8C547;
+  --gold-dark:      #B8961F;
+
+  /* ---------- SEMANTIC ---------- */
+  --fg:             var(--ink);
+  --fg-muted:       var(--ink-2);
+  --fg-subtle:      var(--ink-3);
+  --bg:             var(--paper);
+  --bg-elev:        var(--paper-2);
+  --border:         rgba(26, 35, 50, 0.12);
+  --border-strong:  rgba(26, 35, 50, 0.22);
+  --link:           var(--pos-red);
+  --link-hover:     var(--pos-red-dark);
+
+  /* ---------- TYPE FAMILIES ---------- */
+  --font-display: 'Oswald', 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-heading: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:    'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif:   'IBM Plex Serif', Georgia, serif;
+
+  /* ---------- TYPE SCALE ---------- */
+  --fs-mega:    96px;
+  --fs-display: 72px;
+  --fs-h1:      48px;
+  --fs-h2:      36px;
+  --fs-h3:      28px;
+  --fs-h4:      22px;
+  --fs-lead:    20px;
+  --fs-body:    17px;
+  --fs-small:   14px;
+  --fs-micro:   12px;
+
+  /* ---------- SPACING ---------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* ---------- RADII ---------- */
+  --r-0: 0;
+  --r-1: 2px;
+  --r-2: 4px;
+  --r-3: 8px;
+  --r-4: 12px;
+  --r-pill: 999px;
+
+  /* ---------- SHADOWS ---------- */
+  --shadow-1: 0 1px 2px rgba(26, 35, 50, 0.06), 0 1px 1px rgba(26, 35, 50, 0.04);
+  --shadow-2: 0 4px 12px rgba(26, 35, 50, 0.08), 0 2px 4px rgba(26, 35, 50, 0.05);
+  --shadow-3: 0 12px 32px rgba(26, 35, 50, 0.12), 0 4px 8px rgba(26, 35, 50, 0.06);
+  --shadow-poster: 6px 6px 0 var(--ink);
+
+  /* ---------- MOTION ---------- */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.6, 0, 0.4, 1);
+  --t-fast: 120ms;
+  --t-base: 200ms;
+  --t-slow: 320ms;
+}
+
+/* ============================================================
+   Base resets + semantic element styles
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.display, h1.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-display);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.mega {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-mega);
+  line-height: 0.88;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+h1, .h1 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: var(--fs-h1);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-5);
+  color: var(--ink);
+}
+
+h2, .h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-4);
+  color: var(--ink);
+}
+
+h3, .h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-3);
+  color: var(--ink);
+}
+
+h4, .h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-h4);
+  line-height: 1.25;
+  margin: 0 0 var(--space-3);
+  color: var(--ink);
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--fg-muted);
+  font-weight: 400;
+}
+
+p { margin: 0 0 var(--space-4); }
+small, .small { font-size: var(--fs-small); color: var(--fg-muted); }
+.micro { font-size: var(--fs-micro); letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-subtle); font-weight: 600; }
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color var(--t-fast) var(--ease-out);
+}
+a:hover { color: var(--link-hover); }
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pos-red);
+}
+
+.pull-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1.35;
+  color: var(--ink);
+  border-left: 4px solid var(--pos-red);
+  padding-left: var(--space-5);
+  margin: var(--space-6) 0;
+}
+
+.gradient-text {
+  background: var(--pos-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.flag-rule {
+  display: block;
+  width: 72px;
+  height: 4px;
+  background: var(--pos-gradient);
+  border: 0;
+  margin: var(--space-5) 0;
+}
