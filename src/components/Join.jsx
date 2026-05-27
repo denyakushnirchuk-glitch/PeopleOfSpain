@@ -1,11 +1,46 @@
 import { useState } from 'react';
 
+const BREVO_API_KEY = import.meta.env.VITE_BREVO_API_KEY;
+const BREVO_LIST_ID = Number(import.meta.env.VITE_BREVO_LIST_ID);
+
 export default function Join() {
-  const [submitted, setSubmitted] = useState(false);
-  function handleSubmit(e) {
+  const [email, setEmail]   = useState('');
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    setSubmitted(true);
+    if (!BREVO_API_KEY || !BREVO_LIST_ID) {
+      // Keys not configured yet — graceful fallback during development
+      setStatus('success');
+      return;
+    }
+
+    setStatus('loading');
+    try {
+      const res = await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': BREVO_API_KEY,
+        },
+        body: JSON.stringify({
+          email,
+          listIds: [BREVO_LIST_ID],
+          updateEnabled: true,
+        }),
+      });
+
+      // 201 = created, 204 = already exists and updated
+      if (res.status === 201 || res.status === 204) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   }
+
   return (
     <section className="join" id="join">
       <div className="container">
@@ -18,8 +53,11 @@ export default function Join() {
               No paywall. No tiers. One movement, one membership, one promise: when we win, we hand the country back to the people who built it.
             </p>
           </div>
-          {submitted ? (
-            <div className="join__ok">¡Bienvenido! We'll be in touch.</div>
+
+          {status === 'success' ? (
+            <div className="join__ok">
+              ¡Bienvenido! You're in. Expect your first update within the hour.
+            </div>
           ) : (
             <form className="join__form" onSubmit={handleSubmit}>
               <input
@@ -27,10 +65,25 @@ export default function Join() {
                 type="email"
                 placeholder="tu@correo.es"
                 aria-label="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={status === 'loading'}
               />
-              <button className="btn btn--on-dark" type="submit">Sign Up</button>
+              <button
+                className="btn btn--on-dark"
+                type="submit"
+                disabled={status === 'loading'}
+              >
+                {status === 'loading' ? 'Signing up…' : 'Sign Up'}
+              </button>
             </form>
+          )}
+
+          {status === 'error' && (
+            <p className="join__error">
+              Something went wrong — please try again or contact us directly.
+            </p>
           )}
         </div>
       </div>

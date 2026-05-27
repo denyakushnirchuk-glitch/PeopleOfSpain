@@ -748,6 +748,11 @@ section + section { padding-top: 0; }
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+.join__error {
+  color: var(--gold);
+  font-size: 14px;
+  margin-top: var(--space-3);
+}
 
 /* ---------- About teaser (home) ---------- */
 .about {
