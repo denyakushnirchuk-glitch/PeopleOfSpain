@@ -31,16 +31,16 @@ export default function Footer() {
           <div className="footer__col">
             <h4>Contact</h4>
             <ul>
-              <li><a href="mailto:prensa@pos-espana.org">prensa@pos-espana.org</a></li>
-              <li><a href="mailto:voluntarios@pos-espana.org">voluntarios@pos-espana.org</a></li>
-              <li><a href="tel:+34911234567">+34 911 23 45 67</a></li>
-              <li><span>Calle Mayor 12, Madrid</span></li>
+              <li><a href="mailto:prensa@pos-espana.org">denyadev@proton.me</a></li>
+              <li><a href="mailto:voluntarios@pos-espana.org">vacant@position.md</a></li>
+              <li><a href="tel:+34911234567">+34 951 701 689</a></li>
+              <li><span>Av. Puerta de Hierro, 28071 Madrid</span></li>
             </ul>
           </div>
         </div>
         <div className="footer__bottom">
           <span className="micro">© 2026 People of Spain · A political movement</span>
-          <span className="micro">Pan · Techo · Trabajo</span>
+          <span className="micro">Make Spain Great Again</span>
         </div>
       </div>
     </footer>

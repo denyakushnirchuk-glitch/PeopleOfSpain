@@ -6,29 +6,61 @@
 // Each entry in the array below is one manifesto page.
 // Fields you will want to change most often are marked with ← EDIT
 //
-// STRUCTURE OF ONE MANIFESTO:
-// {
-//   id:          URL slug. Keep lowercase, no spaces (e.g. "immigration"). ← EDIT
-//   num:         Display number, two digits (e.g. "01"). ← EDIT
-//   es:          Spanish-language title. Shown as the eyebrow. ← EDIT
-//   title:       English-language title. Shown as the big headline. ← EDIT
-//   authors:     Optional. Array of strings. Shown as a byline on the page. ← EDIT
-//   lede:        One paragraph. Sets up the manifesto before the policies. ← EDIT
-//   policies:    Array of 4 policy objects (see below). ← EDIT
-//   pullQuote:   A single sentence. Shown large + italic at the end. ← EDIT
-//   numberBand:  Exactly 3 items. The big number bar above the policies. ← EDIT
-// }
+// THE MANIFESTO PAGE LAYOUT
+//   Hero (number, Spanish title, English title, byline, lede)
+//   → Paragraphs on the left, one photo on the right
+//   → Prev / next links to neighbouring manifestos
 //
-// STRUCTURE OF ONE POLICY:
+// FIELDS YOU FILL IN:
 // {
-//   num:    e.g. "1.1" — shown as an eyebrow
-//   title:  Short policy name (shown as h3)
-//   body:   One or two sentences of explanation
+//   id:           URL slug. Keep lowercase, no spaces (e.g. "immigration"). ← EDIT
+//   num:          Display number, two digits (e.g. "01"). ← EDIT
+//   es:           Spanish-language title. Shown as the eyebrow. ← EDIT
+//   title:        English-language title. Shown as the big headline. ← EDIT
+//   authors:      Optional. Array of strings. Shown as a byline on the page. ← EDIT
+//   lede:         One paragraph under the headline. Sets up the manifesto. ← EDIT
+//   body:         Array of content items. Each item is one of:
+//
+//                   1. A STRING  → becomes a <p> paragraph.
+//
+//                   2. A HEADING → becomes a section heading with a small
+//                      red-to-purple bar beneath. Write it as:
+//                        { heading: "The Problem" }
+//
+//                   3. A LIST    → becomes a bulleted list with red dashes.
+//                      Write it as:
+//                        { list: [
+//                          "First bullet",
+//                          "Second bullet",
+//                          "Third bullet"
+//                        ]}
+//
+//                 Example mixing all three:
+//                   body: [
+//                     "Opening paragraph.",
+//                     { heading: "The Problem" },
+//                     "A paragraph describing the problem.",
+//                     "We will collaborate with:",
+//                     { list: ["Local communities", "Unions", "Schools"] },
+//                     "A closing paragraph."
+//                   ]                                                  ← EDIT
+//   photo:        Path to the photo shown on the right.
+//                 Place files in  public/manifestos/  and reference them
+//                 as  "manifestos/your-filename.jpg".
+//                 Recommended dimensions: 800×1000px (4:5 portrait).
+//                 If empty or the file is missing, a gradient placeholder
+//                 with the manifesto number is shown instead.            ← EDIT
+//   photoCaption: Optional. Small caption under the photo.               ← EDIT
 // }
 //
 // TO ADD A NEW MANIFESTO: duplicate any entry and change all ← EDIT fields.
 // TO REORDER:  drag the whole object earlier or later in the array.
 // TO REMOVE:   delete the entire { ... } block (and its trailing comma).
+//
+// NOTE: some entries below still contain `policies`, `numberBand`, and
+// `pullQuote` fields from the original schema. These are now ignored —
+// the page no longer renders them. You can safely leave them or delete
+// them as you replace each manifesto with your real content.
 // =============================================================================
 
 // To edit on GitHub: open this file, click the pencil icon, make changes,
@@ -39,10 +71,46 @@ export const POS_MANIFESTOS = [
   {
     id:      "immigration",          // ← EDIT: URL slug
     num:     "01",                   // ← EDIT: display number
-    es:      "La Frontera de la Dignidad", // ← EDIT: Spanish eyebrow
+    es:      "Immigration and Borders",     // ← EDIT: eyebrow label
     title:   "A border built on dignity, not fear.", // ← EDIT: headline
     authors: ["Ryan Spanhoff", "Alicja Jelonek"], // ← EDIT: byline (can be empty [])
-    lede:    "Spain has always been a country of arrivals — Phoenicians, Romans, Moors, Jews, and every wave of labour that built this country when its own children left. We will not pretend that border policy is simple. But we insist that it begins with a person, not a number.", // ← EDIT
+    lede:    "How would a centre-left political party build stronger borders to ensure the safety of the nation while promoting equality and opportunities?", // ← EDIT
+
+    photo:        "manifestos/immigration.jpg", // ← EDIT (drop the file in public/manifestos/)
+    photoCaption: "",                            // ← EDIT (optional small caption under the photo)
+    body: [
+      // ── THE PROBLEM ──────────────────────────────────────────────────
+      { heading: "The Problem" },
+      "In recent years, Spain has seen more cases of illegal immigrants, human trafficking, and increased demand for services for immigrants. Poor border management may lead to an increased risk of crime, dangerous migration routes, and doubts over the identity of immigrants. However, many immigrants seek refuge in Spain due to wars, persecution, and humanitarian disasters.",
+      "The policy of immigration in our party will be based on three pillars: security, equality, and responsibility. A nation that does not protect its borders cannot guarantee its safety, but a nation that lacks empathy cannot guarantee the preservation of human dignity. In our opinion, legal migration enriches Spain if it is regulated, well-organised, and meets the requirements of society and the economy.",
+
+      // ── OUR PROPOSAL ─────────────────────────────────────────────────
+      { heading: "Our Proposal" },
+      "The People of Spain (POS) party will implement more effective, smarter border control mechanisms to improve national security and reduce illegal migration. We will strengthen border surveillance, enhance cooperation with European agencies, and develop technologies for detecting human trafficking and organised crime.",
+      "In addition, we will protect refugees seeking refuge from wars, persecutions, and humanitarian emergencies by offering them an efficient asylum system. Those who immigrate to Spain legally and make positive contributions by working and studying, and by adhering to the laws, will be provided with an easy route to citizenship.",
+      "We will also develop integration programmes such as:",
+      { list: [
+        "Spanish language classes",
+        "Job training programmes",
+        "Citizenship education",
+        "Help for families migrating to Spain legally"
+      ]},
+      "Those who have committed serious offences and violated the law repeatedly will be deported.",
+
+      // ── IMPLEMENTATION ───────────────────────────────────────────────
+      { heading: "Implementation" },
+      "Our policies will be implemented by investing in them from the national government level, as well as collaborating with the European Union regarding border security programmes. Border police and immigration officers will have better training and equipment to make the process more efficient.",
+      "The government will collaborate with:",
+      { list: [
+        "Local communities",
+        "Refugee organisations",
+        "Law enforcement agencies",
+        "Work and education services"
+      ]},
+      "This will enable Spain to have secure borders and at the same time help those who truly require their assistance. Our political party believes that having secure borders and respecting human rights can go hand-in-hand."
+    ],
+
+    // ── STRUCTURED LAYOUT (optional — appears below the prose section) ────
     policies: [
       {
         num:   "1.1",
@@ -77,10 +145,34 @@ export const POS_MANIFESTOS = [
   {
     id:      "economy",
     num:     "02",
-    es:      "Economía Para Todos",
+    es:      "Economy for Everyone",
     title:   "An economy that works for everyone who works.",
     authors: ["Denys Kushnirchuk"],
-    lede:    "Growth that stays in spreadsheets and never reaches a wage packet is not progress — it is accounting. We build an economy from the floor up: protect the worker first, invest in what Spain makes with its hands, and stop rewarding monopoly over merit.",
+    lede:    "To the fellow citizens of Spain. Look around.",
+
+    photo:        "manifestos/economy.jpg",  // ← EDIT (drop the file in public/manifestos/)
+    photoCaption: "",                         // ← EDIT (optional caption under the photo)
+    body: [
+      // ── OPENING DIAGNOSIS ────────────────────────────────────────────
+      "The current administration, under the voice of Pedro Sánchez, speaks LOUDLY about the social progress they have made. However, take a look inside the poorly developed regions: the economy is CRUSHING regular families. They do not SEE what is happening. They do not see the crushing price of living in our country. And we are not just short by a few apartments. CaixaBank has revealed that we are facing a deficit of more than 750,000 homes. Imagine this. 750 THOUSAND people are struggling every day to survive in their own country. How can you call this fair?",
+
+      "As usual, the government is throwing small fixes at problems nobody asked them to solve. They are seemingly BLIND to the actual DISASTER going on in our country. If we let this slide even one year longer, we are risking Spain turning into a port for the wealthy, pushing the 25% of the population already in poverty into even higher quarters.",
+
+      "And to make it worse, this is not the only crisis. Our youth generation is already struggling to afford rent, let alone build a sufficient balance for a normal lifestyle. When you pair the lack of housing with the astonishing 24.5% youth unemployment rate, we are effectively building the perfect prison for future generations. More than 50% OF HARD-WORKING young Spaniards are forced to spend more than half of their paycheque SOLELY to keep a roof over their head. They cannot save. They cannot progress. Sometimes it just appears that they are trapped in the endless cycle of Spanish life, forced to delay their lives well into their thirties, which removes all the fun that life is supposed to give you.",
+
+      // ── THE PLAN ─────────────────────────────────────────────────────
+      { heading: "The Root's Plan" },
+      "We, as People of Spain, will no longer just stand and watch this stagnation continue. We will present the all-new and original Root's Plan. We are going to launch a massive construction of 150,000 local-only youth housing units. We will also break the barrier on housing prices by introducing youth programmes for up to a 95% mortgage on new builds.",
+
+      // ── FUNDING ──────────────────────────────────────────────────────
+      { heading: "How We Pay For It" },
+      "How are we going to fund this massive project? Most importantly, it is going to be done without placing a single tax increase on the working taxpayer. We will utilise the leftover EU NextGenerationEU funds and implement a targeted 1.5% tax increase on large corporations and the wealthiest people in our country, to introduce equality.",
+
+      // ── CLOSING ──────────────────────────────────────────────────────
+      { heading: "Vote" },
+      "The current government has given us false hopes, fake solutions, and hollow promises of a better future. We, People of Spain, will replace fake plans with an actual structured and realistic plan. With that said: vote for People of Spain!"
+    ],
+
     policies: [
       {
         num:   "2.1",
@@ -115,10 +207,30 @@ export const POS_MANIFESTOS = [
   {
     id:      "healthcare",
     num:     "03",
-    es:      "Salud es Derecho",
+    es:      "Health is a Right",
     title:   "One health card. Forty-seven million citizens.",
     authors: [],
-    lede:    "The Spanish public health system is among the finest built in the twentieth century. It has been underfunded in the twenty-first. We will reverse that — not with warm words, but with budget lines, headcounts, and measurable targets.",
+    lede:    "Healthcare should never be a privilege for the wealthy. It is a basic human right for all.",
+
+    photo:        "manifestos/healthcare.jpg", // ← EDIT
+    photoCaption: "",                           // ← EDIT
+    body: [
+      // ── OPENING PRINCIPLE ────────────────────────────────────────────
+      "Every progressive believes that every person, no matter who they are, the income they earn, or even where they live, should never be denied quality healthcare. Healthcare must not be treated as a privilege for the wealthy. It is a basic human right for all.",
+
+      // ── THE PROBLEM ──────────────────────────────────────────────────
+      { heading: "The Reality" },
+      "Yet across Spain, especially in Madrid, this is happening in front of our own noses. The growing privatisation of public healthcare is diminishing access to essential medical services. Hospitals are overcrowded. Medical staff are overworked. Patients face longer waiting times, and those waiting times are taking away the crucial minutes that save lives. Instead of improving the public system, funding cuts have left it underfunded and pushed it closer to inequality.",
+
+      // ── THE RESPONSE ─────────────────────────────────────────────────
+      { heading: "Already on the Streets" },
+      "The consequences are already visible in Madrid, where thousands of healthcare workers and citizens are striking and protesting for more funding. Doctors, nurses, and patients are demanding a system that prioritises people over profits, and guarantees every person an equal healthcare opportunity.",
+
+      // ── OUR PLAN ─────────────────────────────────────────────────────
+      { heading: "Our Plan" },
+      "A progressive government, such as People of Spain, must fund and expand the public healthcare network. We will invest in hospitals, increase staff levels, reduce waiting times, and guarantee fair pay and working conditions for medical staff. We will reverse the privatisation and dismantlement of public services, and ensure the high quality of healthcare every person deserves."
+    ],
+
     policies: [
       {
         num:   "3.1",
@@ -153,10 +265,27 @@ export const POS_MANIFESTOS = [
   {
     id:      "climate",
     num:     "04",
-    es:      "El Planeta No Espera",
-    title:   "Spain's climate plan is its industrial plan.",
+    es:      "Climate Change and Environment",
+    title:   "A greener Spain. A fairer Spain.",
     authors: [],
-    lede:    "We do not treat the climate transition as a sacrifice. We treat it as the industrial project of our century — job-creating, sovereignty-restoring, and overdue by two decades. Spain has more sun, wind and coastline than almost anywhere in Europe. We have no excuse.",
+    lede:    "Climate change must be addressed through sustainable policies that protect the planet for future generations — and a just transition that brings every worker and community with us. Sustainability, clean energy, and social fairness are not competing priorities. They are the same priority.",
+
+    photo:        "manifestos/climate.jpg",   // ← EDIT
+    photoCaption: "",                          // ← EDIT
+    body: [
+      // ── SUSTAINABILITY ────────────────────────────────────────────────
+      { heading: "Sustainability" },
+      "Climate change must be addressed through sustainable policies that protect the planet for future generations. Sustainability means using natural resources responsibly and reducing waste and pollution. Governments should encourage recycling, sustainable farming, and environmentally friendly industries to lower environmental damage. As a result, society can continue developing economically while also protecting ecosystems and improving people's quality of life.",
+
+      // ── CLEAN ENERGY AND GREEN TECHNOLOGY ────────────────────────────
+      { heading: "Clean Energy and Green Technology" },
+      "A transition to clean energy is necessary to reduce carbon emissions and fight global warming. Renewable energy sources such as solar, wind, and hydropower are cleaner alternatives to fossil fuels. Investing in green technology, including electric vehicles and energy-efficient infrastructure, can create new jobs and modernise the economy. Clean energy policies benefit both the environment and economic growth at the same time.",
+
+      // ── ENVIRONMENTAL CONSERVATION AND FAIR TRANSITION ────────────────
+      { heading: "Environmental Conservation and Fair Transition" },
+      "Protecting forests, oceans, and biodiversity is essential for maintaining a healthy planet. Strong environmental laws and international cooperation can help conserve nature and reduce pollution. However, environmental changes should also be fair to the workers and communities affected by new climate policies. Governments must provide retraining programmes and new job opportunities for people working in polluting industries. Climate action can and must support both social justice and environmental protection — these are not competing values. They are the same value, seen from two angles."
+    ],
+
     policies: [
       {
         num:   "4.1",
@@ -191,10 +320,28 @@ export const POS_MANIFESTOS = [
   {
     id:      "security",
     num:     "05",
-    es:      "Seguridad con Justicia",
+    es:      "Security and Justice",
     title:   "Safe streets, fair courts, zero tolerance for corruption.",
     authors: [],
-    lede:    "Security is not a right-wing value. It is a basic condition of a free life. We will invest in the police, reform the courts, and pursue corruption — in public office, in finance, and in organised crime — with the same seriousness.",
+    lede:    "Every resident of Spain deserves to feel safe in their community, and to be treated fairly by its courts.",
+
+    photo:        "manifestos/security.jpg",  // ← EDIT
+    photoCaption: "",                          // ← EDIT
+    body: [
+      // ── OPENING DIAGNOSIS ────────────────────────────────────────────
+      "We believe that every person who is a resident in Spain deserves to feel safe and protected in their communities, while also being treated fairly by the justice system. Many people are concerned about crime, repeat offending, and overcrowded prisons. For too long, governments have focused mainly on punishment, instead of looking at the social causes of crime and helping offenders rejoin society with the right mindset.",
+
+      // ── OUR APPROACH ─────────────────────────────────────────────────
+      { heading: "Prevention and Rehabilitation" },
+      "We believe that reducing crime in Spain requires both effective policing and strong rehabilitation programmes. Crime should be prevented through improved policing and quicker crime detection, but also through investment in education, mental health, addiction treatment, youth services, and employment opportunities. A fair justice system should punish serious crimes while giving offenders a chance to rebuild their lives and contribute positively to society. By focusing on prevention and rehabilitation alongside law enforcement, we can create safer communities across Spain.",
+
+      // ── IMPLEMENTATION ───────────────────────────────────────────────
+      { heading: "How We Will Do It" },
+      "Our government will strengthen community policing across Spain, improve police training, and invest in modern technology to help solve crimes. At the same time, we will expand rehabilitation programmes in Spanish prisons by increasing access to education, job training, mental health care, and reintegration support.",
+
+      "Part of Spain's national justice budget will be directed towards prevention and rehabilitation programmes, with additional support coming from European Union justice and security funds. These reforms will be delivered through Spain's Ministry of the Interior, the Ministry of Justice, regional governments, local councils, and NGOs. We will begin with pilot programmes in major Spanish cities before expanding successful policies nationwide, based on reductions in crime and reoffending rates."
+    ],
+
     policies: [
       {
         num:   "5.1",
@@ -229,10 +376,15 @@ export const POS_MANIFESTOS = [
   {
     id:      "technology",
     num:     "06",
-    es:      "Tu Dato, Tu Derecho",
-    title:   "Your data is yours. Your connection is a right.",
+    es:      "Technology and Privacy",
+    title:   "Technology and Privacy",
     authors: [],
-    lede:    "The digital world is now the world. A citizen without reliable internet access is a citizen cut off from healthcare, education, work and public services. Meanwhile, the largest corporations in history have been given the data of millions of Spaniards for free. That ends.",
+    lede:    "This manifesto is being prepared.",
+
+    photo:        "manifestos/technology.jpg", // ← EDIT
+    photoCaption: "",                           // ← EDIT
+    body: [],
+
     policies: [
       {
         num:   "6.1",
@@ -267,10 +419,15 @@ export const POS_MANIFESTOS = [
   {
     id:      "equality",
     num:     "07",
-    es:      "Igualdad Sin Excepción",
-    title:   "Equal under the law. Equal in practice.",
+    es:      "Equality and Human Rights",
+    title:   "Equality and Human Rights",
     authors: [],
-    lede:    "Spain legalised same-sex marriage in 2005. That was progress. But legal equality on paper is not equality in life — in the workplace, in the hospital, in the courtroom, in the street. We close the gap between the law as written and the law as lived.",
+    lede:    "This manifesto is being prepared.",
+
+    photo:        "manifestos/equality.jpg",  // ← EDIT
+    photoCaption: "",                          // ← EDIT
+    body: [],
+
     policies: [
       {
         num:   "7.1",
@@ -305,10 +462,15 @@ export const POS_MANIFESTOS = [
   {
     id:      "housing",
     num:     "08",
-    es:      "Un Hogar Para Cada Familia",
-    title:   "Three million homes. One generation.",
+    es:      "Housing and Urban Development",
+    title:   "Housing and Urban Development",
     authors: [],
-    lede:    "Housing is the most acute injustice of our time. Young Spaniards spend more than 40% of their take-home pay on rent. We build, regulate, and reclaim — at the scale the problem demands. The market has had its turn.",
+    lede:    "This manifesto is being prepared.",
+
+    photo:        "manifestos/housing.jpg",   // ← EDIT
+    photoCaption: "",                          // ← EDIT
+    body: [],
+
     policies: [
       {
         num:   "8.1",
@@ -343,10 +505,27 @@ export const POS_MANIFESTOS = [
   {
     id:      "transport",
     num:     "09",
-    es:      "Mover España",
-    title:   "Every town connected. Every person moving.",
+    es:      "Transport and Infrastructure",
+    title:   "Green mobility, affordable for all.",
     authors: [],
-    lede:    "Infrastructure is the skeleton of a country's ambition. Spain's is ageing, uneven, and too often designed around the assumption that everyone owns a car and lives in a city. We invest in the connections that give people freedom — trains, buses, roads, ports, and digital networks.",
+    lede:    "Transport should be affordable, reliable, and usable for everyone — but many people in Spain struggle with limited access, high ticket prices, and a rural network that leaves whole communities behind. We fix that.",
+
+    photo:        "manifestos/transport.jpg", // ← EDIT
+    photoCaption: "",                          // ← EDIT
+    body: [
+      // ── THE PROBLEM ──────────────────────────────────────────────────
+      { heading: "The Problem" },
+      "Transport should be affordable, reliable, and usable for everyone — but many people in Spain struggle with limited access to public transport, high ticket prices, heavy traffic, and rising pollution. Rural areas in particular lack adequate bus and train connections, cutting people off from schools, workplaces, hospitals, and other essential services. The communities most affected are students, senior citizens, working families, and people on low incomes.",
+
+      // ── OUR PROPOSAL ─────────────────────────────────────────────────
+      { heading: "Our Proposal" },
+      "We propose building a better, more sustainable transport system that serves both urban and rural Spain equally. People of Spain will improve access to public transport by making it greener, more reliable, and more affordable. Our goal is cleaner cities, improved roads, lower pollution levels, and an economy that moves people rather than excluding them. No one in a rural community should have less access to transport than someone living in a city.",
+
+      // ── OUR PLAN ─────────────────────────────────────────────────────
+      { heading: "Our Plan" },
+      "Our plan means investing in electric buses, expanding and improving rail connections for smaller cities and towns, and extending the public transport network into underserved areas. We will lower ticket prices for students, senior citizens, and people on low incomes — so that everyone can reach where they need to go, on time, sustainably, and comfortably. The result will be cleaner roads, reduced congestion, cleaner air, and a better quality of life across Spain's cities and regions."
+    ],
+
     policies: [
       {
         num:   "9.1",
@@ -381,10 +560,15 @@ export const POS_MANIFESTOS = [
   {
     id:      "foreign",
     num:     "10",
-    es:      "España en el Mundo",
-    title:   "A Spain that leads with values, not just interests.",
+    es:      "Foreign Policies",
+    title:   "Foreign Policies",
     authors: [],
-    lede:    "Foreign policy is domestic policy with a passport. The price of energy, the security of supply chains, the rights of Spaniards abroad, the reach of our culture — all of it is shaped by how Spain engages with the world. We will do it openly, consistently, and from a position of principle.",
+    lede:    "This manifesto is being prepared.",
+
+    photo:        "manifestos/foreign.jpg",   // ← EDIT
+    photoCaption: "",                          // ← EDIT
+    body: [],
+
     policies: [
       {
         num:   "10.1",

@@ -5,7 +5,7 @@ const VIDEO_ID = 'YOUR_YOUTUBE_VIDEO_ID';
 
 // EDIT: add poster entries — { src: "/photos/your-poster.jpg", caption: "Caption" }
 const POSTERS = [
-  { src: '', caption: '' },
+  { src: 'C:\Users\dendi\Documents\Dev\Web\Active\Fledged Websites\PeopleOfSpain\public\photos\image1.png', caption: '' },
   { src: '', caption: '' },
   { src: '', caption: '' },
   { src: '', caption: '' },

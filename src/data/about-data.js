@@ -20,13 +20,13 @@ export const POS_TEAM = {
 
   // ─── PRESIDENT ─────────────────────────────────────────────────────────────
   president: {
-    name:   "Ryan Spanhoff",               // ← EDIT: full name
+    name:   "Ryan Alexander Spänhoff",               // ← EDIT: full name
     title:  "President, People of Spain",  // ← EDIT: title shown under name
     photo:  "photos/ryan-spanhoff.jpg",    // ← EDIT: path to photo file
     bio:    [
       // ← EDIT: each string is one paragraph. Add or remove paragraphs freely.
       "Ryan Spanhoff has spent twenty years working in civic infrastructure — organising workers, running municipal campaigns, and sitting across the table from mayors who refused to listen. He founded People of Spain because he ran out of patience with movements that were content to protest without proposing.",
-      "Born in Valencia to a Spanish mother and a Dutch father, Ryan has lived in eight of Spain's seventeen autonomous communities. He speaks Spanish, Catalan, and enough Galician to get himself in trouble at a Saturday market. He believes the only political unit worth caring about is the neighbourhood — and that a country is just a neighbourhood that got ambitious.",
+      "Born in Germany to German parents, Ryan grew up between cultures and communities, shaping his belief that politics should serve ordinary people first. He believes the only political unit worth caring about is the neighbourhood — and that a country is just a neighbourhood that got ambitious.",
       "His programme is simple: ten promises, written down, publicly measurable, with a calendar attached. He will not ask for your trust. He will ask for your scrutiny."
     ]
   },
@@ -40,8 +40,8 @@ export const POS_TEAM = {
       manifesto: "immigration",   // links to manifesto page (use the id from data.js)
       bio: [
         // ← EDIT
-        "Alicja Jelonek arrived in Spain from Kraków at age nineteen with a scholarship, a suitcase, and a conviction that belonging is earned, not granted. She went on to complete a doctorate in migration law at the Universidad Autónoma de Madrid, then spent a decade as a legal advocate for migrant workers in Almería, Murcia, and the Canary Islands.",
-        "She wrote POS's immigration manifesto after realising that every politician who spoke about migration had either never met a migrant worker or had spent so long meeting them professionally that they had forgotten what it felt like to be one."
+        "TO BE PASTED.",
+        "TO BE EDITED."
       ]
     },
     {
@@ -51,8 +51,9 @@ export const POS_TEAM = {
       manifesto: "economy",
       bio: [
         // ← EDIT
-        "Denys Kushnirchuk grew up in Kharkiv and moved to Barcelona in 2010, where he built a small logistics company from a cargo van and a spreadsheet into a 40-person firm. He sold it in 2019, spent two years studying Spain's regional economic data, and arrived at a conclusion he couldn't shake: Spain's economy is not underperforming because its people lack initiative. It is underperforming because its institutions reward consolidation over competition.",
-        "His manifesto for economic policy is the result of three years of conversations with small-business owners, factory workers, farmers and economists across six autonomous communities. He is suspicious of anyone who discusses the economy without mentioning a wage."
+        "Denys Kushnirchuk’s politics were shaped less by ideology than by experience — unemployment, unstable work, rising housing costs and watching talented people struggle to build secure lives. Having lived between Ukraine and Spain, he became deeply skeptical of economic systems that reward consolidation while ordinary workers absorb the risk.",
+        "He believes politics only matters if it improves material conditions: wages, housing, energy costs and opportunity. He is suspicious of anyone who talks about the economy without talking about how people actually live."
+        
       ]
     }
   ],
@@ -62,15 +63,14 @@ export const POS_TEAM = {
   // Bio is intentionally omitted here — only shown for President and VPs.
   // You can add more than 9, or fewer — the grid adjusts to 3 columns.
   team: [
-    { name: "María García",        title: "Head of Outreach",           photo: "photos/team-1.jpg"  }, // ← EDIT
-    { name: "Javi Morales",        title: "Communications Director",     photo: "photos/team-2.jpg"  }, // ← EDIT
-    { name: "Sara Quintero",       title: "Policy Researcher",           photo: "photos/team-3.jpg"  }, // ← EDIT
-    { name: "Tomás Perea",         title: "Regional Coordinator — South",photo: "photos/team-4.jpg"  }, // ← EDIT
-    { name: "Elena Vidal",         title: "Events & Mobilisation",       photo: "photos/team-5.jpg"  }, // ← EDIT
-    { name: "Ander Goikoetxea",    title: "Digital Strategy",            photo: "photos/team-6.jpg"  }, // ← EDIT
-    { name: "Noa Ferreira",        title: "Legal Affairs",               photo: "photos/team-7.jpg"  }, // ← EDIT
-    { name: "Carlos Ibáñez",       title: "Finance & Transparency",      photo: "photos/team-8.jpg"  }, // ← EDIT
-    { name: "Priya Nair",          title: "International Liaison",        photo: "photos/team-9.jpg"  }  // ← EDIT
+    { name: "Noah B.",        title: "Technology And Privacy",           photo: "photos/team-1.jpg"  }, // ← EDIT
+    { name: "Freddie W.",        title: "Communications Director",     photo: "photos/team-2.jpg"  }, // ← EDIT
+    { name: "Margo A.",       title: "Climate change & Environment",           photo: "photos/team-3.jpg"  }, // ← EDIT
+    { name: "Fred C.",         title: "Crime And Security"               ,photo: "photos/team-4.jpg"  }, // ← EDIT
+    { name: "Deni A.",         title: "Department of Healthcare",       photo: "photos/team-5.jpg"  }, // ← EDIT
+    { name: "Olivia I.",    title: "Equality And Human Rights",            photo: "photos/team-6.jpg"  }, // ← EDIT
+    { name: "Maksim S.",        title: "Foreign Policies",               photo: "photos/team-7.jpg"  }, // ← EDIT
+    { name: "Tatiana T.",       title: "Housing And Urban Development",      photo: "photos/team-8.jpg"  }, // ← EDIT
   ]
 
 };

@@ -1,0 +1,3 @@
+# Place manifesto photos here.
+# Reference them in src/data/data.js as: photo: "manifestos/your-file.jpg"
+# Recommended dimensions: 800×1000px (4:5 portrait).

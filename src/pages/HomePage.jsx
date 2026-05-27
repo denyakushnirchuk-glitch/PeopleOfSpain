@@ -43,7 +43,7 @@ export default function HomePage() {
             <div className="pillars__item">
               <div className="es">Futuro</div>
               <h3>Future</h3>
-              <p>A climate plan that is also an industrial plan. A culture funded like it matters. A justice system worth its name.</p>
+              <p>A sustainable economy running on clean energy. A fair transition that protects workers in changing industries. A climate commitment made in writing, not in speeches.</p>
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function HomePage() {
             </div>
             <div className="about__body">
               <h3>A movement, not a brand.</h3>
-              <p>People of Spain (POS) was convened by a coalition of trade-union members, rural mayors, doctors, teachers and renters. We are not a political party. We do not exist to manage your expectations. We exist to organise the country around ten promises that are large enough to matter and concrete enough to keep.</p>
+              <p>People of Spain (POS) was founded by {POS_TEAM.president.name} — a civic organiser who spent twenty years working in campaigns and ran out of patience with movements content to protest without proposing. We are not a political party. We do not exist to manage your expectations. We exist to organise the country around ten promises that are large enough to matter and concrete enough to keep.</p>
               <p>You will not find euphemism on this website. If a single promise on this site is broken, we expect you to break with us.</p>
             </div>
           </div>
