@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom';
 import { POS_MANIFESTOS } from '../data/data.js';
-import ManifestoCard from '../components/ManifestoCard.jsx';
 
 export default function ManifestosHub() {
   return (
@@ -18,8 +18,17 @@ export default function ManifestosHub() {
       </section>
       <section style={{ paddingTop: 0 }}>
         <div className="container">
-          <div className="manifesto-grid">
-            {POS_MANIFESTOS.map((m) => <ManifestoCard key={m.id} m={m} />)}
+          <div className="manifesto-index">
+            {POS_MANIFESTOS.map((m) => (
+              <Link key={m.id} className="manifesto-row" to={`/manifesto/${m.id}`}>
+                <span className="manifesto-row__num">{m.num}</span>
+                <div className="manifesto-row__mid">
+                  <span className="manifesto-row__topic">{m.es}</span>
+                  <h3 className="manifesto-row__title">{m.title}</h3>
+                </div>
+                <span className="manifesto-row__read">Read <span className="arrow">→</span></span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

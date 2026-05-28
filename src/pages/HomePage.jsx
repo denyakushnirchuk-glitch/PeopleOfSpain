@@ -7,21 +7,28 @@ export default function HomePage() {
   return (
     <div className="page">
       <section className="hero">
+        <div className="hero__watermark" aria-hidden="true">10</div>
         <div className="container">
-          <div className="hero__eyebrow">
-            <span className="eyebrow">A Manifesto for 2030</span>
-          </div>
-          <h1 className="hero__cry">
-            Make Spain<br />
-            <span className="accent">Great</span>{' '}
-            <span className="accent--purple">Again.</span>
-          </h1>
-          <p className="hero__lead">
-            <strong>Ten Promises, One Country.</strong> Every family in Spain deserves three basic things: bread on the table, a roof over their heads, and stable work. Pan, techo y trabajo — not as a slogan, but as a guarantee we should already be delivering.
-          </p>
-          <div className="hero__actions">
-            <Link className="btn btn--primary btn--lg" to="/manifestos">Read the Ten Promises</Link>
-            <button className="btn btn--ghost" onClick={() => window.dispatchEvent(new CustomEvent('open-join-modal'))}>Join the Campaign →</button>
+          <div className="hero__split">
+            <div className="hero__left">
+              <div className="hero__eyebrow">
+                <span className="eyebrow">A Manifesto for 2030</span>
+              </div>
+              <h1 className="hero__cry">
+                Make Spain<br />
+                <span className="accent">Great</span>{' '}
+                <span className="accent--purple">Again.</span>
+              </h1>
+            </div>
+            <div className="hero__right">
+              <p className="hero__lead">
+                <strong>Ten Promises, One Country.</strong> Every family in Spain deserves three basic things: bread on the table, a roof over their heads, and stable work. Pan, techo y trabajo — not as a slogan, but as a guarantee we should already be delivering.
+              </p>
+              <div className="hero__actions">
+                <Link className="btn btn--primary btn--lg" to="/manifestos">Read the Ten Promises</Link>
+                <button className="btn btn--ghost" onClick={() => window.dispatchEvent(new CustomEvent('open-join-modal'))}>Join the Campaign →</button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -57,7 +64,7 @@ export default function HomePage() {
             </h2>
             <Link className="btn btn--secondary" to="/manifestos">See all manifestos</Link>
           </div>
-          <div className="manifesto-grid">
+          <div className="manifesto-grid manifesto-grid--featured">
             {POS_MANIFESTOS.slice(0, 3).map((m) => <ManifestoCard key={m.id} m={m} />)}
           </div>
         </div>
