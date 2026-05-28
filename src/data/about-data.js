@@ -34,7 +34,7 @@ export const POS_TEAM = {
   // ─── VICE PRESIDENTS ───────────────────────────────────────────────────────
   vicePresidents: [
     {
-      name:      "Alicja Jelonek",                         // ← EDIT
+      name:      "Alicja (Ala) Jelonek",                         // ← EDIT
       title:     "1st Vice President · Immigration & Borders", // ← EDIT
       photo:     "photos/alicja-jelonek.jpg",              // ← EDIT
       manifesto: "immigration",   // links to manifesto page (use the id from data.js)
