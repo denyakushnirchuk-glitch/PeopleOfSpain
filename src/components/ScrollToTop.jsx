@@ -7,10 +7,18 @@ function ease(t) {
 }
 
 export default function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, state } = useLocation();
   const rafRef = useRef(null);
 
   useEffect(() => {
+    // Manifesto horizontal-slide navigation owns the visual transition —
+    // just jump instantly so there's no conflicting scroll animation.
+    if (state?.dir) {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      window.scrollTo(0, 0);
+      return;
+    }
+
     /* Respect the OS "reduce motion" preference */
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       window.scrollTo(0, 0);
@@ -33,7 +41,7 @@ export default function ScrollToTop() {
       if (t < 1) {
         rafRef.current = requestAnimationFrame(step);
       } else {
-        window.scrollTo(0, 0);   /* guarantee exact top */
+        window.scrollTo(0, 0);
         rafRef.current = null;
       }
     }
@@ -42,7 +50,7 @@ export default function ScrollToTop() {
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [pathname]);
+  }, [pathname]);   // eslint-disable-line react-hooks/exhaustive-deps
 
   return null;
 }

@@ -741,6 +741,13 @@ section + section { padding-top: 0; }
   text-decoration: none;
   min-height: 110px;
   transition: background var(--t-fast) var(--ease-out), border-color var(--t-fast) var(--ease-out);
+  /* button reset */
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
 }
 .manifesto-nav__link:hover { background: var(--paper-3); border-color: var(--border-strong); }
 .manifesto-nav__link--next { text-align: right; }
@@ -1277,6 +1284,43 @@ section + section { padding-top: 0; }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Manifesto horizontal slide transitions
+   Exit: current manifesto flies out left/right + slightly up
+   Enter: new manifesto arrives from opposite side + slightly below  */
+@keyframes slideOutToLeft {
+  from { opacity: 1; transform: translate(0, 0); }
+  to   { opacity: 0; transform: translate(-64px, -18px); }
+}
+@keyframes slideOutToRight {
+  from { opacity: 1; transform: translate(0, 0); }
+  to   { opacity: 0; transform: translate(64px, -18px); }
+}
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translate(64px, 14px); }
+  to   { opacity: 1; transform: translate(0, 0); }
+}
+@keyframes slideInFromLeft {
+  from { opacity: 0; transform: translate(-64px, 14px); }
+  to   { opacity: 1; transform: translate(0, 0); }
+}
+
+/* Clicking "next" → exit left, new page enters from right */
+.page[data-exit="next"] {
+  animation: slideOutToLeft 260ms var(--ease-out) both;
+  pointer-events: none;
+}
+/* Clicking "prev" → exit right, new page enters from left */
+.page[data-exit="prev"] {
+  animation: slideOutToRight 260ms var(--ease-out) both;
+  pointer-events: none;
+}
+.page[data-enter="next"] {
+  animation: slideInFromRight 320ms var(--ease-out) both;
+}
+.page[data-enter="prev"] {
+  animation: slideInFromLeft 320ms var(--ease-out) both;
 }
 
 /* ---------- Utility ---------- */
