@@ -10,8 +10,8 @@ export default function AboutPage() {
         <div className="container">
           <div className="hero__eyebrow"><span className="eyebrow">The People Behind the Promises</span></div>
           <h1 className="hero__cry">
-            Built by people.<br />
-            <span className="accent">Run by people.</span>
+            Real names.<br />
+            <span className="accent">Real promises.</span>
           </h1>
           <p className="hero__lead">
             No party apparatus. No consultants. People of Spain is governed by the people whose names are on this page, and accountable to the members whose names are on our roll.

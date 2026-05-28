@@ -12,7 +12,7 @@ export default function ManifestosHub() {
             <span className="accent--purple">Before 2030.</span>
           </h1>
           <p className="hero__lead">
-            Ten promises, written in plain English. Each one contains a goal and a clear objective. Read one or read all — the choice is yours.
+            Ten specific things we will have done by 2030. Numbered, written down, and signed with our names — so you know exactly who to hold responsible.
           </p>
         </div>
       </section>

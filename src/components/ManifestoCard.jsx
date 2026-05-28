@@ -8,7 +8,7 @@ export default function ManifestoCard({ m }) {
       <h3 className="manifesto-card__title">{m.title}</h3>
       <p className="manifesto-card__lede">{m.lede.split('.')[0]}.</p>
       <div className="manifesto-card__read">
-        Read promise {m.num}
+        Read
         <span className="arrow">→</span>
       </div>
     </Link>
