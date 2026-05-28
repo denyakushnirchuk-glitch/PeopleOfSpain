@@ -1,11 +1,34 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { POS_TEAM } from '../data/about-data.js';
 import PhotoSlot from '../components/PhotoSlot.jsx';
 
+// Rectangular photo for the president — fills a 3:4 container via CSS
+function PresidentPhoto({ src, name }) {
+  const [broken, setBroken] = useState(false);
+  const initials = name
+    ? name.split(' ').slice(0, 2).map((w) => w[0]).join('').toUpperCase()
+    : '??';
+  return (
+    <div className="president-profile__photo-wrap">
+      {!broken && src ? (
+        <img src={src} alt={name} onError={() => setBroken(true)} />
+      ) : (
+        <div className="president-profile__photo-fallback" aria-hidden="true">
+          {initials}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function AboutPage() {
   const { president, vicePresidents, team } = POS_TEAM;
+
   return (
     <div className="page">
+
+      {/* ── HERO ── */}
       <section className="hero">
         <div className="container">
           <div className="hero__eyebrow"><span className="eyebrow">The People Behind the Promises</span></div>
@@ -19,67 +42,113 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── PRESIDENT PROFILE ── */}
       <section>
         <div className="container">
-          <div className="org-tree">
+          <div className="about-section-label">
+            <span className="about-section-label__text">President of the Movement</span>
+          </div>
+          <div className="president-profile">
 
-            {/* Level 1 — President */}
-            <div className="org-level org-level--president">
-              <div className="org-card org-card--president">
-                <PhotoSlot src={president.photo} name={president.name} size={120} />
-                <div className="org-card__body">
-                  <div className="org-card__role">{president.title}</div>
-                  <h2 className="org-card__name">{president.name}</h2>
-                  {president.bio.map((p, i) => (
-                    <p key={i} className="org-card__bio">{p}</p>
-                  ))}
-                </div>
+            {/* Left — sticky photo + name badge */}
+            <div className="president-profile__photo-col">
+              <PresidentPhoto src={president.photo} name={president.name} />
+              <div className="president-profile__identity">
+                <div className="president-profile__role">{president.title}</div>
+                <div className="president-profile__name">{president.name}</div>
               </div>
             </div>
 
-            {/* Drop → VPs */}
-            <div className="org-drop" />
-            <div className="org-branch org-branch--vp" aria-hidden="true" />
-
-            {/* Level 2 — Vice Presidents */}
-            <div className="org-level org-level--vp">
-              {vicePresidents.map((vp, i) => (
-                <div key={i} className="org-card org-card--vp">
-                  <PhotoSlot src={vp.photo} name={vp.name} size={88} />
-                  <div className="org-card__body">
-                    <div className="org-card__role">{vp.title}</div>
-                    <h3 className="org-card__name org-card__name--vp">{vp.name}</h3>
-                    {vp.bio.map((p, j) => (
-                      <p key={j} className="org-card__bio">{p}</p>
-                    ))}
-                    {vp.manifesto && (
-                      <Link to={`/manifesto/${vp.manifesto}`} className="org-card__manifesto-link">
-                        Read their manifesto →
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Drop → Team */}
-            <div className="org-drop" />
-            <div className="org-branch org-branch--team" aria-hidden="true" />
-
-            {/* Level 3 — Team */}
-            <div className="org-level org-level--team">
-              {team.map((m, i) => (
-                <div key={i} className="org-card org-card--team">
-                  <PhotoSlot src={m.photo} name={m.name} size={64} />
-                  <div className="org-card__name org-card__name--sm">{m.name}</div>
-                  <div className="org-card__role org-card__role--sm">{m.title}</div>
-                </div>
-              ))}
+            {/* Right — pull quote + bio */}
+            <div className="president-profile__bio-col">
+              <blockquote className="president-profile__pullquote">
+                "He will not ask for your trust. He will ask for your scrutiny."
+              </blockquote>
+              <div className="president-profile__bio">
+                {president.bio.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
             </div>
 
           </div>
         </div>
       </section>
+
+      {/* ── MOVEMENT FACTS BANNER ── */}
+      <div className="movement-facts">
+        <div className="container">
+          <div className="movement-facts__grid">
+            <div className="movement-facts__item">
+              <div className="movement-facts__value"><em>10</em></div>
+              <div className="movement-facts__desc">Concrete promises</div>
+            </div>
+            <div className="movement-facts__item">
+              <div className="movement-facts__value">2030</div>
+              <div className="movement-facts__desc">Delivery deadline</div>
+            </div>
+            <div className="movement-facts__item">
+              <div className="movement-facts__value"><em>2026</em></div>
+              <div className="movement-facts__desc">Year founded</div>
+            </div>
+            <div className="movement-facts__item">
+              <div className="movement-facts__value">1</div>
+              <div className="movement-facts__desc">Spain. All of it.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── VICE PRESIDENTS ── */}
+      <section>
+        <div className="container">
+          <div className="about-section-label">
+            <span className="about-section-label__text">Vice Presidents</span>
+          </div>
+          <div className="vp-grid">
+            {vicePresidents.map((vp, i) => (
+              <div key={i} className="vp-card">
+                <div className="vp-card__header">
+                  <PhotoSlot src={vp.photo} name={vp.name} size={72} />
+                  <div className="vp-card__identity">
+                    <div className="vp-card__role">{vp.title}</div>
+                    <h3 className="vp-card__name">{vp.name}</h3>
+                  </div>
+                </div>
+                <div className="vp-card__bio">
+                  {vp.bio.map((p, j) => (
+                    <p key={j}>{p}</p>
+                  ))}
+                </div>
+                {vp.manifesto && (
+                  <Link to={`/manifesto/${vp.manifesto}`} className="vp-card__manifesto-link">
+                    Read their manifesto →
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CAMPAIGN TEAM ── */}
+      <section style={{ background: 'var(--paper-2)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+        <div className="container">
+          <div className="about-section-label">
+            <span className="about-section-label__text">Campaign Team</span>
+          </div>
+          <div className="team-roster">
+            {team.map((m, i) => (
+              <div key={i} className="team-member">
+                <PhotoSlot src={m.photo} name={m.name} size={72} />
+                <div className="team-member__name">{m.name}</div>
+                <div className="team-member__role">{m.title}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

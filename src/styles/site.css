@@ -980,6 +980,257 @@ section + section { padding-top: 0; }
   color: var(--pos-red);
 }
 
+/* ---------- About page redesign ---------- */
+
+/* Full-width section label: [▬] LABEL [──────────────] */
+.about-section-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+.about-section-label::before {
+  content: "";
+  width: 32px;
+  height: 3px;
+  background: var(--pos-red);
+  flex-shrink: 0;
+}
+.about-section-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.about-section-label__text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pos-red);
+  white-space: nowrap;
+}
+
+/* President editorial profile */
+.president-profile {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--space-10);
+  align-items: start;
+}
+.president-profile__photo-col {
+  position: sticky;
+  top: calc(var(--space-7) + 60px); /* below nav */
+}
+.president-profile__photo-wrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--r-3);
+  overflow: hidden;
+  background: var(--paper-3);
+  border: 1px solid var(--border);
+}
+.president-profile__photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.president-profile__photo-fallback {
+  width: 100%;
+  height: 100%;
+  background: var(--pos-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 72px;
+  color: var(--paper);
+  letter-spacing: -0.02em;
+}
+.president-profile__identity {
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--pos-red);
+  margin-top: var(--space-5);
+}
+.president-profile__role {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pos-red);
+  margin-bottom: var(--space-2);
+}
+.president-profile__name {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.president-profile__pullquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(20px, 2.2vw, 27px);
+  line-height: 1.4;
+  color: var(--ink);
+  border-left: 4px solid var(--pos-red);
+  padding-left: var(--space-6);
+  margin: 0 0 var(--space-7);
+}
+.president-profile__bio p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--fg-muted);
+  margin: 0 0 var(--space-5);
+}
+.president-profile__bio p:last-child { margin-bottom: 0; }
+
+/* Movement facts banner */
+.movement-facts {
+  background: var(--ink);
+  color: var(--paper);
+  padding: var(--space-7) 0;
+}
+.movement-facts__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-left: 1px solid rgba(246, 242, 236, 0.12);
+}
+.movement-facts__item {
+  padding: var(--space-6) var(--space-7);
+  border-right: 1px solid rgba(246, 242, 236, 0.12);
+}
+.movement-facts__value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--paper);
+  margin-bottom: var(--space-2);
+}
+.movement-facts__value em {
+  font-style: normal;
+  color: var(--pos-red);
+}
+.movement-facts__desc {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(246, 242, 236, 0.55);
+}
+
+/* Vice President cards */
+.vp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+.vp-card {
+  background: var(--paper-2);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--pos-red);
+  border-radius: var(--r-3);
+  padding: var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.vp-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+.vp-card__identity { flex: 1; min-width: 0; padding-top: 4px; }
+.vp-card__role {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pos-red);
+  margin-bottom: var(--space-2);
+}
+.vp-card__name {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0;
+}
+.vp-card__bio { flex: 1; }
+.vp-card__bio p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--fg-muted);
+  margin: 0 0 var(--space-3);
+}
+.vp-card__bio p:last-child { margin-bottom: 0; }
+.vp-card__manifesto-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pos-red);
+  text-decoration: none;
+  border-bottom: 1px solid var(--pos-red);
+  display: inline-block;
+  padding-bottom: 2px;
+  margin-top: auto;
+  transition: opacity var(--t-fast) var(--ease-out);
+}
+.vp-card__manifesto-link:hover { opacity: 0.7; }
+
+/* Campaign Team roster */
+.team-roster {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  border-radius: var(--r-3);
+  border: 1px solid transparent;
+  transition: border-color var(--t-fast) var(--ease-out),
+              background var(--t-fast) var(--ease-out);
+}
+.team-member:hover {
+  border-color: var(--border);
+  background: var(--paper-3);
+}
+.team-member__name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0;
+}
+.team-member__role {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pos-red);
+  line-height: 1.4;
+}
+
 /* ---------- Art page ---------- */
 .video-frame {
   width: 100%;
@@ -1261,6 +1512,10 @@ section + section { padding-top: 0; }
   .hero__split { grid-template-columns: 1fr; gap: var(--space-6); }
   .hero__right { padding-bottom: 0; }
   .hero__watermark { opacity: 0.2; right: -0.18em; }
+  .president-profile { grid-template-columns: 1fr; }
+  .president-profile__photo-col { position: static; max-width: 300px; }
+  .movement-facts__grid { grid-template-columns: repeat(2, 1fr); }
+  .team-roster { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -1277,6 +1532,9 @@ section + section { padding-top: 0; }
   .manifesto-row__num { font-size: 36px; }
   .manifesto-row__read { display: none; }
   .footer__brand .cry { font-size: 38px; }
+  .vp-grid { grid-template-columns: 1fr; }
+  .team-roster { grid-template-columns: repeat(2, 1fr); }
+  .movement-facts__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ---------- Page transitions ---------- */
