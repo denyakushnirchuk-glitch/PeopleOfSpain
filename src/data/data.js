@@ -377,13 +377,22 @@ export const POS_MANIFESTOS = [
     id:      "technology",
     num:     "06",
     es:      "Technology and Privacy",
-    title:   "Technology and Privacy",
+    title:   "Digital privacy is a right, not a privilege.",
     authors: [],
-    lede:    "This manifesto is being prepared.",
+    lede:    "Technology should be a tool to improve the lives of citizens — not exploit their personal information. POS will make digital privacy a guaranteed right for every person in Spain.",
 
     photo:        "manifestos/technology.jpg", // ← EDIT
     photoCaption: "",                           // ← EDIT
-    body: [],
+    body: [
+      // ── THE PROBLEM ──────────────────────────────────────────────────
+      { heading: "The Problem" },
+      "In Spain, citizens heavily rely on technology for education, healthcare, communication, banking, and work. However, the programmes used to accomplish these tasks are owned by large technology companies that collect enormous amounts of personal data — most of the time without users understanding how it is being used. At the same time, cybercrime and online scams have been increasing across Spain. In 2024 alone, Spain detected over 100,000 cyberattacks, showing the growing danger of inadequate cybersecurity systems. If we do not implement stronger protections, citizens risk their privacy, their security, and their trust in technology altogether.",
+
+      // ── OUR COMMITMENT ───────────────────────────────────────────────
+      { heading: "Our Commitment" },
+      "We believe that digital privacy is a fundamental right for all citizens of Spain. Technology is a tool that was built to serve people fairly and safely — and it must continue to encourage innovation and economic growth while doing so. We want a future where every Spanish citizen can use technology confidently, knowing that their personal information is safe and protected.",
+      "When elected, we will introduce stricter regulations on how companies collect and store user data, ensuring that businesses are fully transparent about how personal information is used. Citizens of Spain will have far greater control over their online data, including the right to permanently delete their personal information from any digital platform at will. We will also implement stricter regulations on artificial intelligence and facial recognition technology to prevent abuse and protect civil liberties."
+    ],
 
     policies: [
       {
@@ -463,13 +472,35 @@ export const POS_MANIFESTOS = [
     id:      "housing",
     num:     "08",
     es:      "Housing and Urban Development",
-    title:   "Housing and Urban Development",
+    title:   "A home is not a commodity. It is a right.",
     authors: [],
-    lede:    "This manifesto is being prepared.",
+    lede:    "Housing is not merely a commodity; it is the foundation of stability, security, and human dignity. Every person deserves access to safe, affordable, and sustainable housing.",
 
     photo:        "manifestos/housing.jpg",   // ← EDIT
     photoCaption: "",                          // ← EDIT
-    body: [],
+    body: [
+      // ── CHARACTER AND SOCIETY ────────────────────────────────────────
+      { heading: "Character and Society" },
+      "We believe that every individual has value, dignity, and the power to improve the world around them. A healthy society begins with responsible, thoughtful, and compassionate people.",
+      "Individuals must strive for honesty, self-discipline, curiosity, and courage. Growth should not only be measured by wealth or status, but by wisdom, kindness, and contribution to others. Freedom is important, but freedom without responsibility weakens communities.",
+      "Society should encourage cooperation over division, understanding over hatred, and progress over fear. Education must teach people how to think, not simply what to think. Technology should serve humanity rather than control it.",
+
+      // ── HOUSING AS A HUMAN RIGHT ──────────────────────────────────────
+      { heading: "Housing as a Human Right" },
+      "Housing is not merely a commodity; it is the foundation of stability, security, and human dignity. Every person deserves access to safe, affordable, and sustainable housing. Cities must be designed for people, not only for profit. Urban development should create communities where people can live, work, learn, and connect without isolation or inequality.",
+      "We reject systems that turn housing into speculation while millions struggle to afford shelter. Urbanisation should not produce overcrowded neighbourhoods, environmental destruction, or social separation between rich and poor. Instead, modern cities should prioritise public transportation, green spaces, walkable streets, and mixed-income communities that strengthen social bonds.",
+
+      // ── THE CITIES WE BUILD ───────────────────────────────────────────
+      { heading: "The Cities We Build" },
+      "The future of urban life must balance innovation with humanity. Buildings should serve human well-being, not just economic growth. Rural communities should not be abandoned, and expanding cities must respect environmental limits and cultural identity.",
+
+      // ── OUR COMMITMENT ───────────────────────────────────────────────
+      { heading: "Our Commitment" },
+      "We reject indifference, greed, and the idea that success belongs only to the powerful. A strong society protects the vulnerable, rewards hard work fairly, and creates opportunities for future generations.",
+      "We believe meaningful change begins with everyday actions: listening carefully, speaking truthfully, helping others, and refusing to accept injustice as normal.",
+      "The future of society depends on the character of individuals and the design of the communities they inhabit. When people act with integrity and societies invest in fairness, sustainability, and shared purpose, communities become stronger, fairer, and more hopeful.",
+      "This manifesto is a call to live consciously, think critically, and build a society based on human dignity, responsibility, sustainable development, and shared progress."
+    ],
 
     policies: [
       {
@@ -561,13 +592,33 @@ export const POS_MANIFESTOS = [
     id:      "foreign",
     num:     "10",
     es:      "Foreign Policies",
-    title:   "Foreign Policies",
+    title:   "Diplomacy first. People over weapons.",
     authors: [],
-    lede:    "This manifesto is being prepared.",
+    lede:    "Too many governments today are choosing military power over meaningful dialogue. People of Spain believes true safety comes from peace talks and international cooperation — not from bigger bombs.",
 
     photo:        "manifestos/foreign.jpg",   // ← EDIT
     photoCaption: "",                          // ← EDIT
-    body: [],
+    body: [
+      // ── THE PROBLEM ──────────────────────────────────────────────────
+      { heading: "The Problem" },
+      "Today, there are too many wars in the world — and this is happening because governments are ignoring peaceful talks and investing in weapons instead. According to the Stockholm International Peace Research Institute (SIPRI), countries now spend a record $2.7 trillion every year on armies and missiles.",
+      "Too often, countries choose military power instead of dialogue. Governments are cutting funding for peace talks, creating fear and distrust between nations. The people suffering most are innocent civilians and poor families living in war zones — millions of ordinary people who lose their homes and jobs, and many who are forced to flee their countries, driving a growing global refugee crisis.",
+
+      // ── DIPLOMACY FIRST ───────────────────────────────────────────────
+      { heading: "Diplomacy First" },
+      "People of Spain believes that true safety comes from peace talks and international aid, not from bigger bombs. That is why we are proposing a new Diplomacy First plan:",
+      { list: [
+        "Reduce spending on offensive weapons",
+        "Lead international peace talks to stop disagreements before they become wars",
+        "Provide foreign aid to help rebuild schools and hospitals in countries damaged by conflict"
+      ]},
+      "By choosing dialogue instead of violence, we can save lives, prevent humanitarian crises, and help countries work together in peace and security.",
+
+      // ── HOW WE WILL FUND IT ───────────────────────────────────────────
+      { heading: "How We Will Fund It" },
+      "We will move 5 per cent of our military budget into a new Peacebuilding Fund, dedicated to conflict prevention and international cooperation. We will also commit 0.7 per cent of our national income (GNI) to international aid — the official target set by the United Nations.",
+      "Our Department of Foreign Affairs will manage this plan, working closely with the United Nations and neutral organisations such as the Red Cross to deliver aid safely and without corruption."
+    ],
 
     policies: [
       {

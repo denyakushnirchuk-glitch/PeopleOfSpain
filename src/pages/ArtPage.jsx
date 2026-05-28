@@ -1,4 +1,3 @@
-import Join from '../components/Join.jsx';
 
 // EDIT: paste your YouTube video ID here (the part after v= in the URL)
 const VIDEO_ID = 'YOUR_YOUTUBE_VIDEO_ID';
@@ -83,7 +82,6 @@ export default function ArtPage() {
           </div>
         </div>
       </section>
-      <Join />
     </div>
   );
 }

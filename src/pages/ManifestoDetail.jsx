@@ -1,7 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { POS_MANIFESTOS } from '../data/data.js';
-import Join from '../components/Join.jsx';
 
 // Right-column photo. Shows the file at m.photo; if the path is empty or the
 // file doesn't load, falls back to a gradient block stamped with the
@@ -132,7 +131,6 @@ export default function ManifestoDetail() {
         </div>
       </section>
 
-      <Join />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { POS_TEAM } from '../data/about-data.js';
 import PhotoSlot from '../components/PhotoSlot.jsx';
-import Join from '../components/Join.jsx';
 
 export default function AboutPage() {
   const { president, vicePresidents, team } = POS_TEAM;
@@ -81,7 +80,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <Join />
     </div>
   );
 }

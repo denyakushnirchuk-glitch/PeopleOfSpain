@@ -21,7 +21,7 @@ export default function Nav() {
             <NavLink className={({ isActive }) => 'nav__link ' + (isActive ? 'nav__link--active' : '')} to="/art">Art</NavLink>
             <NavLink className={({ isActive }) => 'nav__link ' + (isActive ? 'nav__link--active' : '')} to="/about">About</NavLink>
           </nav>
-          <a className="btn btn--primary btn--sm" href="#/join">Join</a>
+          <button className="btn btn--primary btn--sm" onClick={() => window.dispatchEvent(new CustomEvent('open-join-modal'))}>Join</button>
         </div>
       </div>
     </header>

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { POS_MANIFESTOS } from '../data/data.js';
 import { POS_TEAM } from '../data/about-data.js';
 import ManifestoCard from '../components/ManifestoCard.jsx';
-import Join from '../components/Join.jsx';
 
 export default function HomePage() {
   return (
@@ -18,11 +17,11 @@ export default function HomePage() {
             <span className="accent--purple">Again.</span>
           </h1>
           <p className="hero__lead">
-            Ten promises. One country. <strong>Pan, techo y trabajo</strong> — bread, shelter and work — for every family in every province by the close of this decade. The People of Spain are not waiting for permission.
+            <strong>Ten Promises, One Country.</strong> Every family in Spain deserves three basic things: bread on the table, a roof over their heads, and stable work. Pan, techo y trabajo — not as a slogan, but as a guarantee we should already be delivering.
           </p>
           <div className="hero__actions">
             <Link className="btn btn--primary btn--lg" to="/manifestos">Read the Ten Promises</Link>
-            <a className="btn btn--ghost" href="#/join">Join the Movement →</a>
+            <button className="btn btn--ghost" onClick={() => window.dispatchEvent(new CustomEvent('open-join-modal'))}>Join the Campaign →</button>
           </div>
         </div>
       </section>
@@ -91,7 +90,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <Join />
     </div>
   );
 }

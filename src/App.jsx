@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
+import JoinModal from './components/JoinModal.jsx';
 import HomePage from './pages/HomePage.jsx';
 import ManifestosHub from './pages/ManifestosHub.jsx';
 import ManifestoDetail from './pages/ManifestoDetail.jsx';
@@ -22,6 +23,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <JoinModal />
     </>
   );
 }

@@ -1,6 +1,5 @@
 import { POS_MANIFESTOS } from '../data/data.js';
 import ManifestoCard from '../components/ManifestoCard.jsx';
-import Join from '../components/Join.jsx';
 
 export default function ManifestosHub() {
   return (
@@ -24,7 +23,6 @@ export default function ManifestosHub() {
           </div>
         </div>
       </section>
-      <Join />
     </div>
   );
 }
