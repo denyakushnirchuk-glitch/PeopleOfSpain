@@ -28,6 +28,14 @@ export default function HomePage() {
                 <Link className="btn btn--primary btn--lg" to="/manifestos">Read the Ten Promises</Link>
                 <button className="btn btn--ghost" onClick={() => window.dispatchEvent(new CustomEvent('open-join-modal'))}>Join the Campaign →</button>
               </div>
+              <Link to="/art" className="btn--video" aria-label="Watch the campaign film">
+                <span className="btn--video__icon" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="6 3 20 12 6 21 6 3" />
+                  </svg>
+                </span>
+                Watch the Film
+              </Link>
             </div>
           </div>
         </div>

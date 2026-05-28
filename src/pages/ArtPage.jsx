@@ -1,10 +1,11 @@
+import { useState } from 'react';
 
 // EDIT: paste your YouTube video ID here (the part after v= in the URL)
 const VIDEO_ID = 'YOUR_YOUTUBE_VIDEO_ID';
 
-// EDIT: add poster entries — { src: "/photos/your-poster.jpg", caption: "Caption" }
+// EDIT: add poster entries — { src: "photos/your-poster.jpg", caption: "Caption" }
 const POSTERS = [
-  { src: 'C:\Users\dendi\Documents\Dev\Web\Active\Fledged Websites\PeopleOfSpain\public\photos\image1.png', caption: '' },
+  { src: 'photos/image1.png', caption: '' },
   { src: '', caption: '' },
   { src: '', caption: '' },
   { src: '', caption: '' },
@@ -12,10 +13,39 @@ const POSTERS = [
   { src: '', caption: '' },
 ];
 
+// Individual poster card — falls back to placeholder on broken image
+function PosterItem({ src, caption }) {
+  const [broken, setBroken] = useState(false);
+  const showPlaceholder = !src || broken;
+  return (
+    <div className="poster">
+      {showPlaceholder ? (
+        <div className="poster__placeholder">
+          <div className="poster__placeholder-badge">POS</div>
+          <span>Poster forthcoming</span>
+        </div>
+      ) : (
+        <img
+          className="poster__img"
+          src={src}
+          alt={caption || 'Campaign poster'}
+          onError={() => setBroken(true)}
+        />
+      )}
+      {caption && !showPlaceholder && (
+        <div className="poster__caption">{caption}</div>
+      )}
+    </div>
+  );
+}
+
 export default function ArtPage() {
   const videoSet = VIDEO_ID && VIDEO_ID !== 'YOUR_YOUTUBE_VIDEO_ID';
+
   return (
     <div className="page">
+
+      {/* ── HERO ── */}
       <section className="hero">
         <div className="container">
           <div className="hero__eyebrow"><span className="eyebrow">Art &amp; Inspiration</span></div>
@@ -29,59 +59,58 @@ export default function ArtPage() {
         </div>
       </section>
 
-      <section>
+      {/* ── FILM — dark cinematic section ── */}
+      <div className="art-film">
         <div className="container">
-          <span className="eyebrow">Our Film</span>
-          <hr className="flag-rule" />
-          <div className="video-frame">
-            {videoSet ? (
-              <iframe
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${VIDEO_ID}`}
-                title="POS campaign film"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                style={{ display: 'block' }}
-              />
-            ) : (
-              <div className="video-placeholder">
-                <div className="play">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                  </svg>
+          <div className="about-section-label art-film__label">
+            <span className="about-section-label__text">Our Film</span>
+          </div>
+          <div className="art-film__video">
+            <div className="video-frame">
+              {videoSet ? (
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${VIDEO_ID}`}
+                  title="POS campaign film"
+                  frameBorder="0"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{ display: 'block' }}
+                />
+              ) : (
+                <div className="video-placeholder">
+                  <div className="play" aria-hidden="true">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                  </div>
+                  <p className="label">
+                    Set <code style={{ fontFamily: 'monospace', opacity: 0.7 }}>VIDEO_ID</code> in{' '}
+                    <code style={{ fontFamily: 'monospace', opacity: 0.7 }}>src/pages/ArtPage.jsx</code>{' '}
+                    to embed your campaign film
+                  </p>
                 </div>
-                <p className="label">Set VIDEO_ID in src/pages/ArtPage.jsx to embed your film</p>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
+      {/* ── CAMPAIGN POSTERS ── */}
       <section>
         <div className="container">
-          <span className="eyebrow">Campaign Posters</span>
-          <hr className="flag-rule" />
+          <div className="about-section-label">
+            <span className="about-section-label__text">Campaign Posters</span>
+          </div>
           <div className="poster-grid">
             {POSTERS.map((p, i) => (
-              <div key={i} className="poster">
-                {p.src ? (
-                  <img className="poster__img" src={p.src} alt={p.caption} />
-                ) : (
-                  <div className="poster__placeholder">
-                    <img src="assets/pos-logo-transparent.png" alt="" />
-                    <span>Poster forthcoming</span>
-                  </div>
-                )}
-                {p.caption && p.src && (
-                  <div className="poster__caption">{p.caption}</div>
-                )}
-              </div>
+              <PosterItem key={i} src={p.src} caption={p.caption} />
             ))}
           </div>
         </div>
       </section>
+
     </div>
   );
 }
