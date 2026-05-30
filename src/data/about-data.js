@@ -34,8 +34,8 @@ export const POS_TEAM = {
   // ─── VICE PRESIDENTS ───────────────────────────────────────────────────────
   vicePresidents: [
     {
-      name:      "Alicja (Ala) Jelonek",                         // ← EDIT
-      title:     "1st Vice President · Immigration & Borders", // ← EDIT
+      name:      "Ala Jelonek",                         // ← EDIT
+      title:     "VP · Immigration & Borders", // ← EDIT
       photo:     "photos/alicja-jelonek.jpg",              // ← EDIT
       manifesto: "immigration",   // links to manifesto page (use the id from data.js)
       bio: [
@@ -46,7 +46,7 @@ export const POS_TEAM = {
     },
     {
       name:      "Denys Kushnirchuk",                      // ← EDIT
-      title:     "2nd Vice President · Economic Policies", // ← EDIT
+      title:     "CO-VP · Economic Policies", // ← EDIT
       photo:     "photos/denys-kushnirchuk.jpg",           // ← EDIT
       manifesto: "economy",
       bio: [

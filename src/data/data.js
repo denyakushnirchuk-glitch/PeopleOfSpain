@@ -73,7 +73,7 @@ export const POS_MANIFESTOS = [
     num:     "01",                   // ← EDIT: display number
     es:      "Immigration and Borders",     // ← EDIT: eyebrow label
     title:   "A border built on dignity, not fear.", // ← EDIT: headline
-    authors: ["Ryan Spanhoff", "Alicja Jelonek"], // ← EDIT: byline (can be empty [])
+    authors: ["Ryan Spanhoff", "Ala Jelonek"], // ← EDIT: byline (can be empty [])
     lede:    "How would a centre-left political party build stronger borders to ensure the safety of the nation while promoting equality and opportunities?", // ← EDIT
 
     photo:        "manifestos/immigration.jpg", // ← EDIT (drop the file in public/manifestos/)
@@ -209,7 +209,7 @@ export const POS_MANIFESTOS = [
     num:     "03",
     es:      "Health is a Right",
     title:   "One health card. Forty-seven million citizens.",
-    authors: [],
+    authors: ["Deni"],
     lede:    "Healthcare should never be a privilege for the wealthy. It is a basic human right for all.",
 
     photo:        "manifestos/healthcare.jpg", // ← EDIT
@@ -267,7 +267,7 @@ export const POS_MANIFESTOS = [
     num:     "04",
     es:      "Climate Change and Environment",
     title:   "A greener Spain. A fairer Spain.",
-    authors: [],
+    authors: ["Margo"],
     lede:    "Climate change must be addressed through sustainable policies that protect the planet for future generations — and a just transition that brings every worker and community with us. Sustainability, clean energy, and social fairness are not competing priorities. They are the same priority.",
 
     photo:        "manifestos/climate.jpg",   // ← EDIT
@@ -322,7 +322,7 @@ export const POS_MANIFESTOS = [
     num:     "05",
     es:      "Security and Justice",
     title:   "Safe streets, fair courts, zero tolerance for corruption.",
-    authors: [],
+    authors: ["Fred"],
     lede:    "Every resident of Spain deserves to feel safe in their community, and to be treated fairly by its courts.",
 
     photo:        "manifestos/security.jpg",  // ← EDIT
@@ -378,7 +378,7 @@ export const POS_MANIFESTOS = [
     num:     "06",
     es:      "Technology and Privacy",
     title:   "Digital privacy is a right, not a privilege.",
-    authors: [],
+    authors: ["Noah"],
     lede:    "Technology should be a tool to improve the lives of citizens — not exploit their personal information. POS will make digital privacy a guaranteed right for every person in Spain.",
 
     photo:        "manifestos/technology.jpg", // ← EDIT
@@ -430,7 +430,7 @@ export const POS_MANIFESTOS = [
     num:     "07",
     es:      "Equality and Human Rights",
     title:   "Equality and Human Rights",
-    authors: [],
+    authors: ["Olivia Iqbal"],
     lede:    "This manifesto is being prepared.",
 
     photo:        "manifestos/equality.jpg",  // ← EDIT
@@ -473,7 +473,7 @@ export const POS_MANIFESTOS = [
     num:     "08",
     es:      "Housing and Urban Development",
     title:   "A home is not a commodity. It is a right.",
-    authors: [],
+    authors: ["Tatiana"],
     lede:    "Housing is not merely a commodity; it is the foundation of stability, security, and human dignity. Every person deserves access to safe, affordable, and sustainable housing.",
 
     photo:        "manifestos/housing.jpg",   // ← EDIT
@@ -538,7 +538,7 @@ export const POS_MANIFESTOS = [
     num:     "09",
     es:      "Transport and Infrastructure",
     title:   "Green mobility, affordable for all.",
-    authors: [],
+    authors: ["Freddie"],
     lede:    "Transport should be affordable, reliable, and usable for everyone — but many people in Spain struggle with limited access, high ticket prices, and a rural network that leaves whole communities behind. We fix that.",
 
     photo:        "manifestos/transport.jpg", // ← EDIT
@@ -593,7 +593,7 @@ export const POS_MANIFESTOS = [
     num:     "10",
     es:      "Foreign Policies",
     title:   "Diplomacy first. People over weapons.",
-    authors: [],
+    authors: ["Maksym"],
     lede:    "Too many governments today are choosing military power over meaningful dialogue. People of Spain believes true safety comes from peace talks and international cooperation — not from bigger bombs.",
 
     photo:        "manifestos/foreign.jpg",   // ← EDIT
