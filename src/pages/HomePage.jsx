@@ -2,31 +2,47 @@ import { Link } from 'react-router-dom';
 import { POS_MANIFESTOS } from '../data/data.js';
 import { POS_TEAM } from '../data/about-data.js';
 import ManifestoCard from '../components/ManifestoCard.jsx';
+import Reveal from '../components/Reveal.jsx';
 
 export default function HomePage() {
   return (
     <div className="page">
       <section className="hero">
+        <div className="hero__watermark" aria-hidden="true">10</div>
         <div className="container">
-          <div className="hero__eyebrow">
-            <span className="eyebrow">A Manifesto for 2030</span>
-          </div>
-          <h1 className="hero__cry">
-            Make Spain<br />
-            <span className="accent">Great</span>{' '}
-            <span className="accent--purple">Again.</span>
-          </h1>
-          <p className="hero__lead">
-            <strong>Ten Promises, One Country.</strong> Every family in Spain deserves three basic things: bread on the table, a roof over their heads, and stable work. Pan, techo y trabajo — not as a slogan, but as a guarantee we should already be delivering.
-          </p>
-          <div className="hero__actions">
-            <Link className="btn btn--primary btn--lg" to="/manifestos">Read the Ten Promises</Link>
-            <button className="btn btn--ghost" onClick={() => window.dispatchEvent(new CustomEvent('open-join-modal'))}>Join the Campaign →</button>
+          <div className="hero__split">
+            <div className="hero__left">
+              <div className="hero__eyebrow">
+                <span className="eyebrow">A Manifesto for 2030</span>
+              </div>
+              <h1 className="hero__cry">
+                Make Spain<br />
+                <span className="accent">Great</span>{' '}
+                <span className="accent--purple">Again.</span>
+              </h1>
+            </div>
+            <div className="hero__right">
+              <p className="hero__lead">
+                <strong>Ten Promises, One Country.</strong> Every family in Spain deserves three basic things: bread on the table, a roof over their heads, and stable work. Pan, techo y trabajo — not as a slogan, but as a guarantee we should already be delivering.
+              </p>
+              <div className="hero__actions">
+                <Link className="btn btn--primary btn--lg" to="/manifestos">Read the Ten Promises</Link>
+                <button className="btn btn--ghost" onClick={() => window.dispatchEvent(new CustomEvent('open-join-modal'))}>Join the Campaign →</button>
+              </div>
+              <Link to="/art" className="btn--video" aria-label="Watch the campaign film">
+                <span className="btn--video__icon" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="6 3 20 12 6 21 6 3" />
+                  </svg>
+                </span>
+                Watch the Film
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="pillars-wrap">
+      <Reveal as="section" className="pillars-wrap">
         <div className="container">
           <div className="pillars">
             <div className="pillars__item">
@@ -46,9 +62,9 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section>
+      <Reveal as="section">
         <div className="container">
           <div className="section-head">
             <h2 className="section-head__title">
@@ -57,13 +73,13 @@ export default function HomePage() {
             </h2>
             <Link className="btn btn--secondary" to="/manifestos">See all manifestos</Link>
           </div>
-          <div className="manifesto-grid">
+          <div className="manifesto-grid manifesto-grid--featured">
             {POS_MANIFESTOS.slice(0, 3).map((m) => <ManifestoCard key={m.id} m={m} />)}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="about">
+      <Reveal as="section" className="about">
         <div className="container">
           <div className="about__grid">
             <div>
@@ -89,7 +105,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
     </div>
   );
 }

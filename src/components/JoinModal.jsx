@@ -82,13 +82,20 @@ export default function JoinModal() {
           onClick={() => setOpen(false)}
           aria-label="Close"
         >
-          ✕
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
         </button>
 
         {status === 'success' ? (
 
           <div className="modal__success">
-            <div className="modal__success-icon">✓</div>
+            <div className="modal__success-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
             <h2 className="modal__title">¡Gracias!</h2>
             <p className="modal__lead">You are part of the movement now. We will be in touch.</p>
             <button className="btn btn--primary" onClick={() => setOpen(false)}>

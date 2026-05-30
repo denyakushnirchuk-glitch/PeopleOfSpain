@@ -32,7 +32,7 @@ export default function Footer() {
             <h4>Contact</h4>
             <ul>
               <li><a href="mailto:denyadev@proton.me">denyadev@proton.me</a></li>
-              <li><a href="tel:+34911234567">+34 951 701 689</a></li>
+              <li><a href="tel:+34911234567">+34 911 234 567</a></li>
               <li><span>Av. Puerta de Hierro, 28071 Madrid</span></li>
             </ul>
           </div>
