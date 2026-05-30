@@ -84,6 +84,7 @@ export default function ManifestoDetail() {
       {/* ─── HERO ─── */}
       <section className="manifesto-hero">
         <div className="container">
+          
           <Link to="/manifestos" className="manifesto-back">← All Manifestos</Link>
           <div className="manifesto-hero__num">
             {m.num}<span className="total">/ {total}</span>

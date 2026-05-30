@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { POS_TEAM } from '../data/about-data.js';
 import PhotoSlot from '../components/PhotoSlot.jsx';
+import Reveal from '../components/Reveal.jsx';
 
 // Rectangular photo for the president — fills a 3:4 container via CSS
 function PresidentPhoto({ src, name }) {
@@ -76,7 +77,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── MOVEMENT FACTS BANNER ── */}
-      <div className="movement-facts">
+      <Reveal as="div" className="movement-facts">
         <div className="container">
           <div className="movement-facts__grid">
             <div className="movement-facts__item">
@@ -97,10 +98,10 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* ── VICE PRESIDENTS ── */}
-      <section>
+      <Reveal as="section">
         <div className="container">
           <div className="about-section-label">
             <span className="about-section-label__text">Vice Presidents</span>
@@ -129,7 +130,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
       {/* ── CAMPAIGN TEAM ── */}
       <section style={{ background: 'var(--paper-2)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>

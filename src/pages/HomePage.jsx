@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { POS_MANIFESTOS } from '../data/data.js';
 import { POS_TEAM } from '../data/about-data.js';
 import ManifestoCard from '../components/ManifestoCard.jsx';
+import Reveal from '../components/Reveal.jsx';
 
 export default function HomePage() {
   return (
@@ -41,7 +42,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="pillars-wrap">
+      <Reveal as="section" className="pillars-wrap">
         <div className="container">
           <div className="pillars">
             <div className="pillars__item">
@@ -61,9 +62,9 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section>
+      <Reveal as="section">
         <div className="container">
           <div className="section-head">
             <h2 className="section-head__title">
@@ -76,9 +77,9 @@ export default function HomePage() {
             {POS_MANIFESTOS.slice(0, 3).map((m) => <ManifestoCard key={m.id} m={m} />)}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="about">
+      <Reveal as="section" className="about">
         <div className="container">
           <div className="about__grid">
             <div>
@@ -104,7 +105,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
     </div>
   );
 }

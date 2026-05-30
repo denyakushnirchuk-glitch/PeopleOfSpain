@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 // EDIT: paste your YouTube video ID here (the part after v= in the URL)
-const VIDEO_ID = 'YOUR_YOUTUBE_VIDEO_ID';
+const VIDEO_ID = 't9SvKlzmeuQ';
 
 // EDIT: add poster entries — { src: "photos/your-poster.jpg", caption: "Caption" }
 const POSTERS = [
@@ -13,24 +13,117 @@ const POSTERS = [
   { src: '', caption: '' },
 ];
 
-// Individual poster card — falls back to placeholder on broken image
-function PosterItem({ src, caption }) {
+/* ── Lightbox ───────────────────────────────────────────── */
+function PosterLightbox({ src, caption, onClose }) {
+  // Lock body scroll while open
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, []);
+
+  // Escape key closes
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key === 'Escape') onClose();
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  // Backdrop click closes (but not content clicks)
+  function handleBackdrop(e) {
+    if (e.target === e.currentTarget) onClose();
+  }
+
+  return (
+    <div
+      className="lightbox-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Poster enlarged view"
+      onClick={handleBackdrop}
+    >
+      {/* Close button */}
+      <button
+        className="lightbox__close"
+        aria-label="Close poster view"
+        onClick={onClose}
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" strokeWidth="2.2"
+          strokeLinecap="round" strokeLinejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      {/* Image + optional caption */}
+      <div className="lightbox__content" onClick={(e) => e.stopPropagation()}>
+        <img
+          className="lightbox__img"
+          src={src}
+          alt={caption || 'Campaign poster'}
+        />
+        {caption && (
+          <div className="lightbox__caption">{caption}</div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ── Individual poster card ─────────────────────────────── */
+function PosterItem({ src, caption, onOpen }) {
   const [broken, setBroken] = useState(false);
   const showPlaceholder = !src || broken;
+  const canOpen = !showPlaceholder;
+
+  function handleActivate() {
+    if (canOpen) onOpen({ src, caption });
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleActivate();
+    }
+  }
+
   return (
-    <div className="poster">
+    <div
+      className={`poster${canOpen ? ' poster--clickable' : ''}`}
+      role={canOpen ? 'button' : undefined}
+      tabIndex={canOpen ? 0 : undefined}
+      aria-label={canOpen ? (caption || 'View campaign poster') : undefined}
+      onClick={handleActivate}
+      onKeyDown={handleKey}
+    >
       {showPlaceholder ? (
         <div className="poster__placeholder">
           <div className="poster__placeholder-badge">POS</div>
           <span>Poster forthcoming</span>
         </div>
       ) : (
-        <img
-          className="poster__img"
-          src={src}
-          alt={caption || 'Campaign poster'}
-          onError={() => setBroken(true)}
-        />
+        <div className="poster__img-wrap">
+          <img
+            className="poster__img"
+            src={src}
+            alt={caption || 'Campaign poster'}
+            onError={() => setBroken(true)}
+          />
+          {/* Hover reveal overlay */}
+          <div className="poster__zoom-hint" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" strokeWidth="1.8"
+              strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 3 21 3 21 9" />
+              <polyline points="9 21 3 21 3 15" />
+              <line x1="21" y1="3" x2="14" y2="10" />
+              <line x1="3" y1="21" x2="10" y2="14" />
+            </svg>
+          </div>
+        </div>
       )}
       {caption && !showPlaceholder && (
         <div className="poster__caption">{caption}</div>
@@ -39,8 +132,12 @@ function PosterItem({ src, caption }) {
   );
 }
 
+/* ── Page ───────────────────────────────────────────────── */
 export default function ArtPage() {
   const videoSet = VIDEO_ID && VIDEO_ID !== 'YOUR_YOUTUBE_VIDEO_ID';
+  const [lightbox, setLightbox] = useState(null);
+
+  const closeLightbox = useCallback(() => setLightbox(null), []);
 
   return (
     <div className="page">
@@ -105,11 +202,20 @@ export default function ArtPage() {
           </div>
           <div className="poster-grid">
             {POSTERS.map((p, i) => (
-              <PosterItem key={i} src={p.src} caption={p.caption} />
+              <PosterItem key={i} src={p.src} caption={p.caption} onOpen={setLightbox} />
             ))}
           </div>
         </div>
       </section>
+
+      {/* ── LIGHTBOX ── */}
+      {lightbox && (
+        <PosterLightbox
+          src={lightbox.src}
+          caption={lightbox.caption}
+          onClose={closeLightbox}
+        />
+      )}
 
     </div>
   );
