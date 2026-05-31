@@ -40,7 +40,7 @@ export const POS_TEAM = {
       manifesto: "immigration",   // links to manifesto page (use the id from data.js)
       bio: [
         // ← EDIT
-        "TAla Jelonek is the Vice President of People of Spain (POS), a political movement committed to representing citizens and promoting positive change across Spain. She works closely with party leadership to help shape policy, coordinate campaign efforts, and engage with communities nationwide.",
+        "Ala Jelonek is the Vice President of People of Spain (POS), a political movement committed to representing citizens and promoting positive change across Spain. She works closely with party leadership to help shape policy, coordinate campaign efforts, and engage with communities nationwide.",
         "Known for her dedication, leadership, and strong communication skills, Ala is committed to building a future that prioritizes opportunity, unity, and practical solutions for all Spaniards."
       ]
     },
