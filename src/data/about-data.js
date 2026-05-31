@@ -22,7 +22,7 @@ export const POS_TEAM = {
   president: {
     name:   "Ryan Alexander Spänhoff",               // ← EDIT: full name
     title:  "President, People of Spain",  // ← EDIT: title shown under name
-    photo:  "photos/ryan-spanhoff.jpg",    // ← EDIT: path to photo file
+    photo:  "photos/ryanpres.jpg",    // ← EDIT: path to photo file
     bio:    [
       // ← EDIT: each string is one paragraph. Add or remove paragraphs freely.
       "Ryan Spanhoff has spent twenty years working in civic infrastructure — organising workers, running municipal campaigns, and sitting across the table from mayors who refused to listen. He founded People of Spain because he ran out of patience with movements that were content to protest without proposing.",
@@ -40,8 +40,8 @@ export const POS_TEAM = {
       manifesto: "immigration",   // links to manifesto page (use the id from data.js)
       bio: [
         // ← EDIT
-        "TO BE PASTED.",
-        "TO BE EDITED."
+        "TAla Jelonek is the Vice President of People of Spain (POS), a political movement committed to representing citizens and promoting positive change across Spain. She works closely with party leadership to help shape policy, coordinate campaign efforts, and engage with communities nationwide.",
+        "Known for her dedication, leadership, and strong communication skills, Ala is committed to building a future that prioritizes opportunity, unity, and practical solutions for all Spaniards."
       ]
     },
     {
