@@ -431,11 +431,30 @@ export const POS_MANIFESTOS = [
     es:      "Equality and Human Rights",
     title:   "Equality and Human Rights",
     authors: ["Olivia Iqbal"],
-    lede:    "This manifesto is being prepared.",
+    lede:    "How would a mid-left political party ensure equality, protect human rights, and provide equal opportunities for all citizens regardless of gender, race, and disability?",
 
     photo:        "manifestos/equality.jpg",  // ← EDIT
     photoCaption: "",                          // ← EDIT
-    body: [],
+    body: [
+      // ── THE PROBLEM ──────────────────────────────────────────────────
+      { heading: "The Problem" },
+      "Spain continues to face significant challenges in ensuring equality, protecting human rights and providing equal opportunities for all citizens regardless of gender, race and disability. It primarily faces structural racism and discrimination. One of the most affected groups is the Roma community, which faces racism when shopping, looking for housing, and dealing with the police.",
+      "This is mainly because of old stereotypes and prejudice that have been passed down for hundreds of years. People still judge them based on stereotypes instead of individuals.",
+      "In addition, people with disabilities suffer significant employment challenges due to the lack of training or work experience that employers want or lack of accessible jobs that, furthermore, they may face accessibility barriers in the workplace or transportation.",
+
+      // ── OUR PROPOSAL ─────────────────────────────────────────────────
+      { heading: "Our Proposal" },
+      "Our mid-left party believes that everyone deserves equal rights and opportunities. We will create an independent Equality and Human rights Monitoring Organisation. This organisation will be responsible for investigating complaints of discrimination in housing, employment, and public services.",
+      "People who experience discrimination will be able to report incidents easily through anonymous online platforms. In addition, we will create programmes that support employment for people with disabilities.",
+      "Schools and businesses will be required to take part in anti-discrimination training provided by the Equality and Human rights Monitoring Organisation.",
+
+      // ── IMPLEMENTATION ───────────────────────────────────────────────
+      { heading: "Implementation" },
+      "These policies will be funded through the government budget by investing more money in equality and anti-discrimination programmes. Some funding could also come from fines given to businesses or landlords that are found guilty of discrimination.",
+      "This will enable Spain to have secure borders and at the same time help those who truly require their assistance. Our political party believes that having secure borders and respecting human rights can go hand-in-handThe Equality and Human rights Monitoring Organisation will be responsible for monitoring these cases, and makes sure everyone anti-discrimination laws are followed.",
+      "The Equality and Human rights Monitoring Organisation will be responsible for monitoring these cases, and makes sure everyone anti-discrimination laws are followed.",
+      "These policies will help create a fairer society where every citizen will be treated equally and have the same rights. These policies will help build a fairer community."
+    ],
 
     policies: [
       {
